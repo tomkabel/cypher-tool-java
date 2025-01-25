@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class CypherTool {
 
     public static String encryptRot13(String s) {
-
-        return s;
+        
+        return shiftString(s, 13);
     }
 
     public static String encryptAtbash(String s) {
@@ -32,7 +32,7 @@ public class CypherTool {
         return (char) ('z'-(input - 'a'));
     }
 
-    public  String shiftString(String s, int shift) {
+    public static String shiftString(String s, int shift) {
         // Hello World / 3
         StringBuilder sb = new StringBuilder();
         for (int i=0;i<s.length();i++) {
