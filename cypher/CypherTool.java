@@ -78,7 +78,6 @@ public class CypherTool {
     }
 
     private static void doOperation() {
-        System.out.println("Welcome to the Cypher Tool!");
         System.out.println("Select operation: ");
         System.out.println("1. Encrypt");
         System.out.println("2. Decrypt");
@@ -127,6 +126,8 @@ public class CypherTool {
             return;
         }
 
+        System.out.println();
+
         String response = "";
         if (operation.equals("1")) {
             System.out.println("Encrypted message: ");
@@ -137,7 +138,6 @@ public class CypherTool {
             } else if (cipher.equals("3")) {
                 response = encryptCaesar(message);
             }
-            System.out.println(response);
         } else if (operation.equals("2")) {
             System.out.println("Decrypted message: ");
             if (cipher.equals("1")) {
@@ -151,10 +151,12 @@ public class CypherTool {
             }
         }
         System.out.println(response);
+        System.out.println();
         doOperation();
     }
 
     public static void main(String[] args) {
+        System.out.println("Welcome to the Cypher Tool!");
 
         doOperation();
     }
