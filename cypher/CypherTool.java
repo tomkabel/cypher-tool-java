@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class CypherTool {
 
+    public static final Scanner scanner = new Scanner(System.in);
+
     public static String encryptRot13(String s) {
         
         return shiftString(s, 13);
@@ -79,14 +81,21 @@ public class CypherTool {
         return strBuilder.toString();
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    private static void doOperation() {
         System.out.println("Welcome to the Cypher Tool!");
         System.out.println("Select operation: ");
         System.out.println("1. Encrypt");
         System.out.println("2. Decrypt");
         String operation = scanner.nextLine().trim();
 
+        if (!operation.equals("1") && !operation.equals("2")) {
+            System.out.println("Error: invalid input");
+            doOperation();
+        }
+        doCypher(operation);
+    }
+
+    private static void doCypher(String operation) {
         System.out.println("Select cypher:");
         System.out.println("1. ROT13");
         System.out.println("2. Atbash");
@@ -94,6 +103,14 @@ public class CypherTool {
 
         String cipher = scanner.nextLine().trim();
 
+        if (!cipher.equals("1") && !cipher.equals("2") && !cipher.equals("3")) {
+            System.out.println("Error: invalid input");
+            doCypher(operation);
+        }
+        doMessage(cipher, operation);
+    }
+
+    private static void doMessage(String cipher, String operation) {
         System.out.println("Enter the message:");
         String message = scanner.nextLine().trim();
 
@@ -102,12 +119,10 @@ public class CypherTool {
             System.out.println("Encrypted message: ");
             if (cipher.equals("1")) {
                 response = encryptRot13(message);
-
             } else if (cipher.equals("2")) {
                 response = encryptAtbash(message);
             } else if (cipher.equals("3")) {
                 response = encryptCaesar(message);
-
             }
             System.out.println(response);
         } else if (operation.equals("2")) {
@@ -121,7 +136,12 @@ public class CypherTool {
                 response = decryptCaesar(message);
 
             }
-            System.out.println(response);
         }
+        System.out.println(response);
+    }
+
+    public static void main(String[] args) {
+        
+       doOperation();
     }
 }
