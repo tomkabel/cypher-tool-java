@@ -1,9 +1,10 @@
-
+package cypher;
 import java.util.Scanner;
 
 public class CypherTool {
 
     public static String encryptRot13(String s) {
+
         return s;
     }
 
@@ -25,6 +26,36 @@ public class CypherTool {
 
     public static String decryptCaesar(String s) {
         return s;
+    }
+
+    public static char reverseLetter(char input) {
+        return (char) ('z'-(input - 'a'));
+    }
+
+    public  String shiftString(String s, int shift) {
+        // Hello World / 3
+        StringBuilder sb = new StringBuilder();
+        for (int i=0;i<s.length();i++) {
+            char letter = s.charAt(i);
+            if (letter >= 'A' && letter <= 'Z') {
+                letter += shift;
+                if (letter > 'Z') {
+                    letter -= 26;
+                } else if (letter < 'A') {
+                    letter += 26;
+                }
+            } else if (letter >= 'a' && letter <= 'z') {
+                letter += shift;
+                if (letter > 'z') {
+                    letter -= 26;
+                } else if (letter < 'a') {
+                    letter += 26;
+                }
+            }
+            sb.append(letter);
+
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
