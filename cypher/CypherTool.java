@@ -64,17 +64,17 @@ public class CypherTool {
         System.out.println("Select operation: ");
         System.out.println("1. Encrypt");
         System.out.println("2. Decrypt");
-        String operation = scanner.next();
+        String operation = scanner.nextLine();
 
         System.out.println("Select cypher:");
         System.out.println("1. ROT13");
         System.out.println("2. Atbash");
         System.out.println("3. Caesar");
 
-        String cipher = scanner.next();
+        String cipher = scanner.nextLine();
 
         System.out.println("Enter the message:");
-        String message = scanner.next();
+        String message = scanner.nextLine();
 
         String response = "";
         if (operation.equals("1")) {
