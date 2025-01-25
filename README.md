@@ -23,3 +23,14 @@ Contributions are welcome! Please follow these steps:
 - Create a new branch for your feature or bugfix (e.g. `feature/rot-13`)
 
 - Submit a pull request with a detailed description of your changes.
+
+
+## Running
+Compile the Java files:
+```bash
+javac -d build Main.java
+```
+Run the project:
+```bash
+java -cp ./build Main
+```
