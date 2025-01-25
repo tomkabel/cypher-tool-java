@@ -8,54 +8,75 @@ public class CypherTool {
         return shiftString(s, 13);
     }
 
-    public static String encryptAtbash(String s) {
-        return s;
+  
+    public static String decryptRot13(String s) {
+        return shiftString(s, -13);
     }
 
-    public static String decryptRot13(String s) {
-        return s;
+    public static String encryptAtbash(String s) {
+        return shiftString(s, 25);
     }
 
     public static String decryptAtbash(String s) {
-        return s;
+        return shiftString(s, -25);
     }
 
     public static String encryptCaesar(String s) {
-        return s;
+        return shiftString(s, 3);
     }
 
     public static String decryptCaesar(String s) {
-        return s;
+        return shiftString(s, -3);
     }
 
-    public static char reverseLetter(char input) {
-        return (char) ('z'-(input - 'a'));
-    }
+    // public static char reverseLetter(char input) {
+    //     return (char) ('z'-(input - 'a'));
+    // }
 
     public static String shiftString(String s, int shift) {
-        // Hello World / 3
-        StringBuilder sb = new StringBuilder();
-        for (int i=0;i<s.length();i++) {
+        // Step 1: Create a StringBuilder to store the shifted string
+        StringBuilder strBuilder = new StringBuilder();
+    
+        // Step 2: Loop through each character in the input string
+        for (int i = 0; i < s.length(); i++) {
+            // Step 3: Get the current character at index i
             char letter = s.charAt(i);
+    
+            // Step 4: Check if the character is an uppercase letter (A-Z)
             if (letter >= 'A' && letter <= 'Z') {
+                // Step 5: Shift the character by the specified amount
                 letter += shift;
+    
+                // Step 6: Handle wrapping around if the character goes beyond 'Z'
                 if (letter > 'Z') {
-                    letter -= 26;
-                } else if (letter < 'A') {
-                    letter += 26;
+                    letter -= 26; // Wrap around to the beginning of the uppercase alphabet
                 }
-            } else if (letter >= 'a' && letter <= 'z') {
-                letter += shift;
-                if (letter > 'z') {
-                    letter -= 26;
-                } else if (letter < 'a') {
-                    letter += 26;
+                // Step 7: Handle wrapping around if the character goes below 'A'
+                else if (letter < 'A') {
+                    letter += 26; // Wrap around to the end of the uppercase alphabet
                 }
             }
-            sb.append(letter);
-
+            // Step 8: Check if the character is a lowercase letter (a-z)
+            else if (letter >= 'a' && letter <= 'z') {
+                // Step 9: Shift the character by the specified amount
+                letter += shift;
+    
+                // Step 10: Handle wrapping around if the character goes beyond 'z'
+                if (letter > 'z') {
+                    letter -= 26; // Wrap around to the beginning of the lowercase alphabet
+                }
+                // Step 11: Handle wrapping around if the character goes below 'a'
+                else if (letter < 'a') {
+                    letter += 26; // Wrap around to the end of the lowercase alphabet
+                }
+            }
+    
+            // Step 12: Append the shifted (or unshifted) character to the StringBuilder
+            strBuilder.append(letter);
         }
-        return sb.toString();
+    
+        // Step 13: Convert the StringBuilder to a String and return the result
+        return strBuilder.toString();
     }
 
     public static void main(String[] args) {
