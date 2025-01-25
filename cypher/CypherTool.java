@@ -16,11 +16,34 @@ public class CypherTool {
     }
 
     public static String encryptAtbash(String s) {
-        return "(Atbash): \n"+shiftString(s, 25);
+        StringBuilder strBuilder = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            // Step 3: Get the current character at index i
+            char letter = s.charAt(i);
+            if (Character.isLowerCase(letter)) {
+                letter = reverseLetterLowercase(letter);
+            } else if(Character.isUpperCase(letter)) {
+                letter = reverseLetterUppercase(letter);
+            }
+            strBuilder.append(letter);
+        }
+
+        return "(Atbash): \n"+strBuilder.toString();
     }
 
     public static String decryptAtbash(String s) {
-        return "(Atbash): \n"+shiftString(s, -25);
+        StringBuilder strBuilder = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            // Step 3: Get the current character at index i
+            char letter = s.charAt(i);
+            if (Character.isLowerCase(letter)) {
+                letter = reverseLetterLowercase(letter);
+            } else if(Character.isUpperCase(letter)) {
+                letter = reverseLetterUppercase(letter);
+            }
+            strBuilder.append(letter);
+        }
+        return "(Atbash): \n"+strBuilder.toString();
     }
 
     public static String encryptCaesar(String s) {
@@ -31,6 +54,12 @@ public class CypherTool {
         return "(Caesar): \n"+shiftString(s, -3);
     }
 
+    private static char reverseLetterLowercase(char input) {
+        return (char) ('z'-(input - 'a'));
+    }
+    private static char reverseLetterUppercase(char input) {
+        return (char) ('Z'-(input - 'A'));
+    }
     public static String shiftString(String s, int shift) {
         // Step 1: Create a StringBuilder to store the shifted string
         StringBuilder strBuilder = new StringBuilder();
