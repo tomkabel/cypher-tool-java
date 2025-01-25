@@ -8,32 +8,29 @@ public class CypherTool {
 
     public static String encryptRot13(String s) {
 
-        return shiftString(s, 13);
+        return "(ROT13): \n"+shiftString(s, 13);
     }
 
     public static String decryptRot13(String s) {
-        return shiftString(s, -13);
+        return "(ROT13): \n"+shiftString(s, -13);
     }
 
     public static String encryptAtbash(String s) {
-        return shiftString(s, 25);
+        return "(Atbash): \n"+shiftString(s, 25);
     }
 
     public static String decryptAtbash(String s) {
-        return shiftString(s, -25);
+        return "(Atbash): \n"+shiftString(s, -25);
     }
 
     public static String encryptCaesar(String s) {
-        return shiftString(s, 3);
+        return "(Caesar): \n"+shiftString(s, 3);
     }
 
     public static String decryptCaesar(String s) {
-        return shiftString(s, -3);
+        return "(Caesar): \n"+shiftString(s, -3);
     }
 
-    // public static char reverseLetter(char input) {
-    //     return (char) ('z'-(input - 'a'));
-    // }
     public static String shiftString(String s, int shift) {
         // Step 1: Create a StringBuilder to store the shifted string
         StringBuilder strBuilder = new StringBuilder();
@@ -130,7 +127,7 @@ public class CypherTool {
 
         String response = "";
         if (operation.equals("1")) {
-            System.out.println("Encrypted message: ");
+            System.out.print("Encrypted message ");
             if (cipher.equals("1")) {
                 response = encryptRot13(message);
             } else if (cipher.equals("2")) {
@@ -139,7 +136,7 @@ public class CypherTool {
                 response = encryptCaesar(message);
             }
         } else if (operation.equals("2")) {
-            System.out.println("Decrypted message: ");
+            System.out.print("Decrypted message ");
             if (cipher.equals("1")) {
                 response = decryptRot13(message);
 
@@ -150,7 +147,8 @@ public class CypherTool {
 
             }
         }
-        System.out.println(response);
+        System.out.print(response);
+        System.out.println();
         System.out.println();
         doOperation();
     }
