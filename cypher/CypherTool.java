@@ -88,6 +88,11 @@ public class CypherTool {
         System.out.println("2. Decrypt");
         String operation = scanner.nextLine().trim();
 
+        if (operation.equalsIgnoreCase("exit")) {
+            System.out.println("Exiting the program. Goodbye!");
+            return;
+        }
+
         if (!operation.equals("1") && !operation.equals("2")) {
             System.out.println("Error: invalid input");
             doOperation();
@@ -103,6 +108,11 @@ public class CypherTool {
 
         String cipher = scanner.nextLine().trim();
 
+        if (cipher.equalsIgnoreCase("exit")) {
+            System.out.println("Exiting the program. Goodbye!");
+            return;
+        }
+
         if (!cipher.equals("1") && !cipher.equals("2") && !cipher.equals("3")) {
             System.out.println("Error: invalid input");
             doCypher(operation);
@@ -113,6 +123,11 @@ public class CypherTool {
     private static void doMessage(String cipher, String operation) {
         System.out.println("Enter the message:");
         String message = scanner.nextLine().trim();
+        
+        if (message.equalsIgnoreCase("exit")) {
+            System.out.println("Exiting the program. Goodbye!");
+            return;
+        }
 
         String response = "";
         if (operation.equals("1")) {
