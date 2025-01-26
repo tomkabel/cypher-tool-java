@@ -4,13 +4,6 @@ import java.util.Scanner;
 
 public class CypherTool {
 
-    /**
-     * The entry point of the Cypher Tool application. This method initializes
-     * the program, prompts the user for input, processes the input, and
-     * displays the results until the user chooses to exit.
-     *
-     * @param args Command-line arguments (not implemented).
-     */
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Welcome to the Cypher Tool!");
@@ -101,9 +94,7 @@ public class CypherTool {
     }
 
     /**
-     * Processes a message using the ROT13 cipher and formats the result. This
-     * method is used to generate a user-friendly output for ROT13 encryption or
-     * decryption.
+     * Processes a message using the ROT13 cipher and formats the result.
      *
      * @param message The input message to be processed.
      * @return A formatted string containing the ROT13 transformation result.
@@ -136,9 +127,7 @@ public class CypherTool {
     }
 
     /**
-     * Processes a message using the Atbash cipher and formats the result. This
-     * method is used to generate a user-friendly output for Atbash encryption
-     * or decryption.
+     * Processes a message using the Atbash cipher and formats the result.
      *
      * @param message The input message to be processed.
      * @return A formatted string containing the Atbash transformation result.
@@ -260,10 +249,8 @@ public class CypherTool {
                     c += 26;
                 }
             }
-
             result.append(c);
         }
-
         return result.toString();
     }
 
@@ -291,7 +278,11 @@ public class CypherTool {
             } else if (input.equals("2")) {
                 return input;
             } else {
-                System.out.println("Error: Invalid input. Please enter 1, 2, or exit.");
+                System.out.println("Error: You entered '" + input + "', which is not a valid operation.");
+                System.out.println("Please enter one of the following options:");
+                System.out.println("- 1 for Encrypt");
+                System.out.println("- 2 for Decrypt");
+                System.out.println("- 'exit' to quit.");
             }
         }
     }
@@ -323,7 +314,12 @@ public class CypherTool {
             } else if (input.equals("3")) {
                 return input;
             } else {
-                System.out.println("Error: Invalid input. Please enter 1, 2, 3, or exit.");
+                System.out.println("Error: You entered '" + input + "', which is not a valid option.");
+                System.out.println("Please enter one of the following options:");
+                System.out.println("- 1 for ROT13");
+                System.out.println("- 2 for Atbash");
+                System.out.println("- 3 for Caesar");
+                System.out.println("- 'exit' to quit.");
             }
         }
     }
@@ -345,7 +341,8 @@ public class CypherTool {
             } else if (!input.isEmpty()) {
                 return input;
             } else {
-                System.out.println("Error: Message cannot be empty.");
+                System.out.println("Error: The message cannot be empty.");
+                System.out.println("Please enter a valid message or type 'exit' to quit.");
             }
         }
     }
@@ -367,7 +364,7 @@ public class CypherTool {
         } else if (inputData.cipher.equals("3")) {
             return processCaesar(inputData.operation, inputData.message);
         } else {
-            throw new IllegalArgumentException("Invalid cipher selection");
+            throw new IllegalArgumentException("Invalid cipher selection. Please choose 1 (ROT13), 2 (Atbash), or 3 (Caesar).");
         }
     }
 
@@ -384,8 +381,8 @@ public class CypherTool {
         String operation;
 
         /**
-         * The selected cipher. Valid values are: "1" for ROT13 - "2" for
-         * Atbash - "3" for Caesar
+         * The selected cipher. Valid values are: "1" for ROT13 - "2" for Atbash
+         * - "3" for Caesar
          */
         String cipher;
 
